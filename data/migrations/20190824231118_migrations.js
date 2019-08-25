@@ -16,7 +16,7 @@ exports.up = function(knex) {
   .createTable('lists', lists =>{
       lists.increment();
       lists
-      .string('task name', 128)
+      .string('list name', 128)
       .notNullable()
 
       lists
@@ -29,9 +29,34 @@ exports.up = function(knex) {
       .onDelete('CASCADE')
 
   })
+  .createTable('tasks', tasks =>{
+      tasks.increment();
+      tasks
+      .string('task name', 128)
+      .notNullable()
 
+      tasks
+      .string('description', 200)
+      .notNullable()
+
+      tasks
+      .boolean('completed')
+      
+      tasks
+      .integer('list_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('lists')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
+
+  })
+  
 };
 
 exports.down = function(knex) {
-  
+  dropTableIfExists('users')
+  dropTableIfExists('lists')
+  dropTableIfExists('tasks')
 };

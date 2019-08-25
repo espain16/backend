@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest --watch"
   },
+  "jest":{
+   "testEnvironment": "node" 
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/espain16/backend.git"
