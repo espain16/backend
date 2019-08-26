@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema
   .createTable('users', users =>{
-      users.increment();
+      users.increments();
       users
       .string('username', 128)
       .unique()
@@ -14,40 +14,28 @@ exports.up = function(knex) {
 
   })
   .createTable('lists', lists =>{
-      lists.increment();
+      lists.increments();
       lists
-      .string('list name', 128)
+      .string('list_name', 128)
       .notNullable()
 
       lists
-      .integer('lists_id')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable('lists')
-      .onUpdate('CASCADE')
-      .onDelete('CASCADE')
-
-  })
-  .createTable('tasks', tasks =>{
-      tasks.increment();
-      tasks
-      .string('task name', 128)
+      .string('task_name', 128)
       .notNullable()
 
-      tasks
-      .string('description', 200)
+      lists
+      .string('description',1000)
       .notNullable()
-
-      tasks
+      
+      lists
       .boolean('completed')
       
-      tasks
-      .integer('list_id')
+      lists
+      .integer('user_id')
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('lists')
+      .inTable('users')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
 
@@ -56,7 +44,8 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  dropTableIfExists('users')
-  dropTableIfExists('lists')
-  dropTableIfExists('tasks')
+  return knex.schema  
+  .dropTableIfExists('users')
+  .dropTableIfExists('lists')
+  
 };
