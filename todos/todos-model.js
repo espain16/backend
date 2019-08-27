@@ -1,8 +1,8 @@
 const db = require('../data/dbConfig')
 module.exports = {
-    add,
-    find,
-    remove,
+    addTodo,
+    findTodo,
+    removeTodo,
     update_todo
 }
 

@@ -7,7 +7,7 @@ exports.seed = function(knex) {
       return knex('todo').insert([
         {
           id: 1, 
-          task_name: 'wash car', 
+          todo_name: 'wash car', 
           description:'vacuum interior, wash car, wax car', 
           list_id:1, 
           user_id:1, 
@@ -15,7 +15,7 @@ exports.seed = function(knex) {
         },
         {
           id: 2, 
-          task_name:'attend hot yoga', 
+          todo_name:'attend hot yoga', 
           description:'user that lovely yoga membership you purchased', 
           list_id: 2, 
           user_id: 2, 
