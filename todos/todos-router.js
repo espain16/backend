@@ -5,7 +5,18 @@ const db = require('./todos-model');
 //find()
 router.get('/todos', (req, res) => {
     db.findTodo()
-    .then(todo => res.json(todo))
+    .then(todo => {
+        for (let i = 0; i < todo.length; i++){
+           if (todo[i].completed !== 0){
+               todo[i].completed = false
+                todo
+           }else{
+                todo[i].completed = true
+                 todo
+           }
+        }res.json(todo)
+        
+    })
 })
 
 //function remove()

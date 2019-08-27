@@ -60,10 +60,10 @@ _HTTP method:_ **[POST]**
 ## **Lists**
 Method | Endpoint | Headers | Description
 ------ | -------- | ------- | -----------
-GET | `/api/lists` | Authorization | Returns List name and id
-POST | `/api/lists` | Authorization | Adds new list to users account
-PUT | `/api/lists/:id` | Authorization | Returns updated list
-DELETE | `/api/lists/:id` | Authorization | Removes list from users account
+GET | `/api/lists` | Authorization(token) | Returns List name and id
+POST | `/api/lists` | Authorization(token) | Adds new list to users account
+PUT | `/api/lists/:id` | Authorization(token) | Returns updated list
+DELETE | `/api/lists/:id` | Authorization(token) | Removes list from users account
 
 ### Accepted List Schema
 ```
@@ -76,10 +76,10 @@ DELETE | `/api/lists/:id` | Authorization | Removes list from users account
 ## **Todos**
 Method | Endpoint | Headers | Description
 ------ | -------- | ------- | -----------
-GET | `/api/todos` | Authorization | Returns List name and id
-POST | `/api/todos` | Authorization | Adds new list to users account
-PUT | `/api/todos/:id` | Authorization | Returns updated list
-DELETE | `/api/todos/:id` | Authorization| Removes list from users account, successful message will show
+GET | `/api/todos` | Authorization(token) | Returns List name and id
+POST | `/api/todos` | Authorization(token) | Adds new list to users account
+PUT | `/api/todos/:id` | Authorization(token) | Returns updated list
+DELETE | `/api/todos/:id` | Authorization(token)| Removes list from users account, successful message will show
 
 
 ### Accepted Todos Schema [GET]
