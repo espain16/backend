@@ -23,10 +23,14 @@ function find(){
 
 //delete a list 
 function remove(id){
- return db('lists').where('id', Number(id)).del()
+    return db('lists')
+    .where('id', Number(id))
+    .del()
 }
 
 //update list
 function update_list(id, todo){
-    return db('lists').where('id', Number(id)).update(todo)
+    return db('lists')
+    .where('id', Number(id))
+    .update(todo)
 }
