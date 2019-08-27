@@ -3,23 +3,37 @@ const router = express.Router();
 const db = require('./todos-model');
 
 //find()
-router.get('/', (req, res) => {
-    db.find()
+router.get('/todos', (req, res) => {
+    db.findTodo()
     .then(todo => res.json(todo))
 })
 
 //function remove()
-router.delete('/:id', (req, res) => { 
-    db.remove(req.params.id)
-    .then(todo => res.json(todo))
+router.delete('/todos/:id', (req, res) => { 
+    db.removeTodo(req.params.id)
+    .then(todo => res.status(200).json({message:'Todo successfully deleted'}))
     .catch(error => {
         res.status(500).json(error);
     })
 })
 //function add()
-router.post('/', (req, res) => {
-    db.add(req.body).then(todo => res.json(todo)).catch(error => {
+router.post('/todos', (req, res) => {
+    db.addTodo(req.body)
+    .then(todo => res.json(todo))
+    .catch(error => {
         res.status(500).json(error);
     })
 })
 //update
+
+router.put('/todos/:id', (req, res) => {
+    const id = req.params.id
+    const body = req.body
+    db.update_todo(id, body)
+    .then(todo => res.status(200).json({message: 'Todo successfully updated'}))
+    .catch(error => {
+        res.status(500).json(error);
+    })
+})
+
+module.exports = router

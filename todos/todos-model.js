@@ -1,4 +1,6 @@
-const db = require('../data/dbConfig')
+const db = require('../data/dbConfig');
+
+
 module.exports = {
     addTodo,
     findTodo,
@@ -17,14 +19,16 @@ function addTodo(todo){
 //get all list 
 function findTodo(){
     return db('todo')
-    .select('todo_name', 'id')
+    
 }
+
 //edit a todo 
-function update_todo(id,){
+function update_todo(id, todo){
     return db('todo')
-    .where('id, Number(id)')
+    .where('id', Number(id))
     .update(todo)
 }
+
 //delete a todo 
 function removeTodo(id){
     return db('todo')

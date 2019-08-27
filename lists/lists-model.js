@@ -12,7 +12,9 @@ module.exports = {
 function add(todo) {
     return db('lists')
     .insert(todo)
-    .then(ids=>({id:ids[0]}));
+    .then(ids => ({
+        id:ids[0]
+    }));
     
 }
 
